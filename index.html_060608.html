@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b3d2e">
+  <meta name="description" content="Rayyan Innovation and Learning Foundation (RILF) — practical computer education, digital skills and community learning.">
+  <title>RILF | Rayyan Innovation and Learning Foundation</title>
+  <style>
+    :root {
+      --green:#0b3d2e; --green2:#146b4a; --lime:#b9df75;
+      --cream:#f7f8f2; --ink:#17231e; --muted:#66736c; --white:#fff;
+      --line:#e3e9e2; --shadow:0 18px 50px rgba(11,61,46,.10);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);background:var(--cream);line-height:1.65}
+    a{color:inherit;text-decoration:none}
+    .container{width:min(1140px,calc(100% - 40px));margin:auto}
+    .topbar{background:var(--green);color:#eaf4ec;font-size:.85rem;padding:9px 0}
+    .topbar .container{display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}
+    header{background:rgba(255,255,255,.94);backdrop-filter:blur(12px);position:sticky;top:0;z-index:10;border-bottom:1px solid var(--line)}
+    nav{min-height:78px;display:flex;align-items:center;justify-content:space-between;gap:25px}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:850;color:var(--green);letter-spacing:-.4px}
+    .logo{width:45px;height:45px;border-radius:14px;background:var(--green);color:var(--lime);display:grid;place-items:center;font-size:1.15rem;font-weight:900;box-shadow:0 7px 18px #0b3d2e2b}
+    .brand small{display:block;font-size:.65rem;letter-spacing:1.7px;color:var(--muted);font-weight:700}
+    .navlinks{display:flex;align-items:center;gap:26px;font-size:.92rem;font-weight:650}
+    .navlinks a:hover{color:var(--green2)}
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 20px;border-radius:999px;background:var(--green);color:white;font-weight:750;border:1px solid var(--green);transition:.2s;cursor:pointer}
+    .btn:hover{background:var(--green2);transform:translateY(-2px)}
+    .btn.light{background:white;color:var(--green);border-color:white}
+    .btn.outline{background:transparent;color:var(--green);border-color:#b8c9bd}
+    .menu-btn{display:none;background:none;border:0;font-size:1.7rem;color:var(--green);cursor:pointer}
+    .hero{background:radial-gradient(circle at 85% 20%,#2c815d 0,transparent 30%),linear-gradient(125deg,#082e23,#0e5940);color:white;overflow:hidden;position:relative}
+    .hero:after{content:"";position:absolute;width:470px;height:470px;border:1px solid #ffffff20;border-radius:50%;right:-160px;bottom:-270px;box-shadow:0 0 0 55px #ffffff09,0 0 0 110px #ffffff07}
+    .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:50px;padding:90px 0 100px;position:relative;z-index:1}
+    .eyebrow{display:inline-flex;align-items:center;gap:9px;color:var(--lime);font-size:.78rem;font-weight:850;letter-spacing:2px;text-transform:uppercase}
+    .eyebrow:before{content:"";width:25px;height:2px;background:var(--lime)}
+    h1{font-size:clamp(2.6rem,5.4vw,4.7rem);line-height:1.08;letter-spacing:-2.6px;margin:18px 0 22px;max-width:700px}
+    h1 span{color:var(--lime)}
+    .hero p{font-size:1.1rem;color:#d8e9df;max-width:590px;margin:0 0 30px}
+    .hero-actions{display:flex;gap:13px;flex-wrap:wrap}
+    .hero-art{min-height:370px;display:grid;place-items:center;position:relative}
+    .orbit{width:min(360px,85vw);aspect-ratio:1;border:1px solid #ffffff35;border-radius:50%;display:grid;place-items:center;position:relative}
+    .orbit:before,.orbit:after{content:"";position:absolute;border:1px solid #ffffff22;border-radius:50%;inset:35px}
+    .orbit:after{inset:72px}
+    .art-core{width:190px;height:190px;border-radius:42px;background:linear-gradient(145deg,#d4f29b,#8acb69);color:var(--green);display:grid;place-items:center;text-align:center;box-shadow:0 25px 65px #061f18aa;transform:rotate(-7deg)}
+    .art-core strong{font-size:3.4rem;line-height:1;display:block}
+    .art-core span{font-size:.75rem;font-weight:900;letter-spacing:2px}
+    .bubble{position:absolute;background:#fff;color:var(--green);padding:12px 16px;border-radius:14px;font-weight:800;box-shadow:var(--shadow);font-size:.88rem}
+    .bubble.one{top:42px;right:0}.bubble.two{bottom:45px;left:0}.bubble.three{bottom:5px;right:20px}
+    section{padding:82px 0}
+    .section-head{text-align:center;max-width:680px;margin:0 auto 42px}
+    .section-head .eyebrow{color:var(--green2)}
+    .section-head .eyebrow:before{background:var(--green2)}
+    h2{font-size:clamp(2rem,3.6vw,3rem);line-height:1.15;letter-spacing:-1.3px;margin:13px 0;color:var(--green)}
+    .section-head p,.muted{color:var(--muted)}
+    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:55px;align-items:center}
+    .about-panel{background:#e8f0e8;border-radius:28px;padding:35px;min-height:330px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}
+    .about-panel:after{content:"RILF";position:absolute;font-size:8rem;font-weight:950;color:#0b3d2e0c;right:-8px;bottom:-35px}
+    .quote-mark{font-size:4rem;line-height:1;color:var(--green2)}
+    .about-panel blockquote{font-size:1.5rem;font-weight:800;line-height:1.35;color:var(--green);margin:0;max-width:400px;position:relative;z-index:1}
+    .about-copy p{color:var(--muted)}
+    .pill-row{display:flex;flex-wrap:wrap;gap:9px;margin-top:22px}
+    .pill{background:white;border:1px solid var(--line);border-radius:99px;padding:8px 13px;font-size:.82rem;font-weight:700;color:var(--green)}
+    .programs{background:#eef3ec}
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .card{background:white;border:1px solid var(--line);border-radius:22px;padding:27px;box-shadow:0 8px 25px #0b3d2e08;transition:.2s}
+    .card:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+    .card-icon{width:53px;height:53px;border-radius:16px;background:#e7f2e5;display:grid;place-items:center;font-size:1.55rem;margin-bottom:19px}
+    .card h3{margin:0 0 9px;color:var(--green);font-size:1.2rem}
+    .card p{margin:0;color:var(--muted);font-size:.94rem}
+    .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:25px;counter-reset:step}
+    .step{padding:10px 20px 15px 0}
+    .step:before{counter-increment:step;content:"0" counter(step);display:block;font-size:2rem;font-weight:900;color:#a0c66b;margin-bottom:12px}
+    .step h3{color:var(--green);margin:0 0 7px}
+    .step p{color:var(--muted);margin:0}
+    .gallery{background:#eef3ec}
+    .gallery-grid{display:grid;grid-template-columns:1.2fr .8fr .8fr;grid-template-rows:180px 180px;gap:14px}
+    .gallery-tile{border-radius:19px;background:linear-gradient(135deg,#dcebd9,#b8d4bd);display:grid;place-items:center;text-align:center;padding:20px;color:var(--green);font-weight:750;position:relative;overflow:hidden}
+    .gallery-tile:first-child{grid-row:span 2;background:linear-gradient(145deg,#0b3d2e,#247b54);color:white}
+    .gallery-tile .symbol{font-size:2.4rem;display:block;margin-bottom:8px}
+    .gallery-tile:first-child .symbol{font-size:4rem}
+    .gallery-note{text-align:center;color:var(--muted);font-size:.85rem;margin-top:15px}
+    .join{background:var(--green);color:white}
+    .join-grid{display:grid;grid-template-columns:1fr 1fr;gap:55px;align-items:center}
+    .join h2{color:white}.join p{color:#d5e5db}
+    .join .eyebrow{color:var(--lime)}
+    .join .eyebrow:before{background:var(--lime)}
+    .join-box{background:white;color:var(--ink);border-radius:24px;padding:30px}
+    .join-box h3{color:var(--green);margin-top:0}
+    .join-box ul{padding-left:20px;color:var(--muted)}
+    .contact-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:45px}
+    .contact-info{background:#eaf1e9;border-radius:23px;padding:28px}
+    .contact-info h3{color:var(--green)}
+    .contact-item{margin:18px 0;color:var(--muted)}
+    form{display:grid;gap:14px}
+    label{font-size:.87rem;font-weight:750;color:var(--green)}
+    input,textarea,select{width:100%;margin-top:6px;padding:13px 14px;border:1px solid #d7e1d8;border-radius:11px;background:white;font:inherit;color:var(--ink)}
+    input:focus,textarea:focus,select:focus{outline:2px solid #9bc978;border-color:transparent}
+    textarea{min-height:115px;resize:vertical}
+    .form-note{font-size:.8rem;color:var(--muted)}
+    footer{background:#06271e;color:#d2e1d7;padding:35px 0}
+    .footer-row{display:flex;justify-content:space-between;gap:20px;align-items:center;flex-wrap:wrap}
+    footer strong{color:white}
+    footer small{color:#a9c0b2}
+    @media(max-width:850px){
+      .navlinks{display:none;position:absolute;top:78px;left:0;right:0;background:white;padding:22px 25px 28px;flex-direction:column;align-items:flex-start;border-bottom:1px solid var(--line)}
+      .navlinks.open{display:flex}.menu-btn{display:block}
+      .nav-cta{display:none}.hero-grid,.about-grid,.join-grid,.contact-grid{grid-template-columns:1fr}
+      .hero-grid{padding:65px 0 75px;gap:20px}.hero-art{min-height:330px}
+      .cards{grid-template-columns:1fr 1fr}.about-grid,.join-grid{gap:30px}
+      .gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:190px 150px 150px}
+      .gallery-tile:first-child{grid-row:span 2}
+    }
+    @media(max-width:560px){
+      .container{width:min(100% - 30px,1140px)}
+      section{padding:62px 0}.topbar .container{font-size:.75rem}
+      h1{letter-spacing:-1.6px}.hero p{font-size:1rem}
+      .hero-art{min-height:285px}.orbit{width:270px}.art-core{width:145px;height:145px;border-radius:32px}
+      .art-core strong{font-size:2.7rem}.bubble{font-size:.75rem;padding:9px 11px}
+      .bubble.one{right:-5px;top:25px}.bubble.two{left:-5px;bottom:30px}
+      .cards,.steps{grid-template-columns:1fr}
+      .gallery-grid{grid-template-rows:170px 135px 135px;gap:9px}
+      .gallery-tile{font-size:.83rem;padding:12px}
+      .about-panel{padding:25px;min-height:290px}
+      .join-box{padding:23px}
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="container"><span>Practical learning. Digital confidence. Brighter possibilities.</span><span>Community-focused skills development</span></div>
+  </div>
+  <header>
+    <nav class="container">
+      <a class="brand" href="#home" aria-label="RILF home">
+        <span class="logo">R</span>
+        <span>RAYYAN <small>INNOVATION &amp; LEARNING FOUNDATION</small></span>
+      </a>
+      <button class="menu-btn" id="menuBtn" aria-label="Open navigation" aria-expanded="false">☰</button>
+      <div class="navlinks" id="navLinks">
+        <a href="#home">Home</a><a href="#about">About</a><a href="#programs">Our Training</a><a href="#gallery">Gallery</a><a href="#contact">Contact</a>
+      </div>
+      <a class="btn nav-cta" href="#contact">Get in touch</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">Welcome to RILF</span>
+          <h1>Learn today.<br><span>Build tomorrow.</span></h1>
+          <p>Rayyan Innovation and Learning Foundation helps people build practical digital skills, grow their confidence and prepare for opportunities in an increasingly technology-driven world.</p>
+          <div class="hero-actions"><a class="btn light" href="#programs">Explore our training</a><a class="btn outline" style="color:white;border-color:#ffffff70" href="#about">Discover RILF</a></div>
+        </div>
+        <div class="hero-art" aria-label="RILF learning and technology illustration">
+          <div class="orbit">
+            <div class="art-core"><div><strong>R</strong><span>LEARN • CREATE</span></div></div>
+            <div class="bubble one">💻 Digital skills</div>
+            <div class="bubble two">✦ Practical learning</div>
+            <div class="bubble three">🚀 Innovation</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container about-grid">
+        <div class="about-panel">
+          <span class="quote-mark">“</span>
+          <blockquote>Empowering people with the knowledge and skills to shape a better future.</blockquote>
+          <span style="font-weight:800;color:#28704d;position:relative;z-index:1">— Our guiding belief</span>
+        </div>
+        <div class="about-copy">
+          <span class="eyebrow">Who we are</span>
+          <h2>Learning that opens doors.</h2>
+          <p><strong>Rayyan Innovation and Learning Foundation (RILF)</strong> is a learning-focused initiative committed to making practical education and digital skills more accessible within our communities.</p>
+          <p>We believe that talent grows when people have access to guidance, hands-on experience and an encouraging environment. Our activities focus on helping learners gain useful skills they can apply in education, work and everyday life.</p>
+          <div class="pill-row"><span class="pill">Practical education</span><span class="pill">Digital inclusion</span><span class="pill">Youth development</span><span class="pill">Innovation</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="programs" id="programs">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">What we offer</span>
+          <h2>Skills for the real world</h2>
+          <p>Our training is designed around practical participation, guided instruction and skills learners can continue developing beyond the classroom.</p>
+        </div>
+        <div class="cards">
+          <article class="card"><div class="card-icon">🖥️</div><h3>Basic Computer Operations</h3><p>Build confidence using a computer, managing files and folders, typing, browsing and carrying out everyday digital tasks.</p></article>
+          <article class="card"><div class="card-icon">📄</div><h3>Microsoft Office</h3><p>Develop practical skills in Microsoft Word, Excel and PowerPoint for school, work, presentations and personal productivity.</p></article>
+          <article class="card"><div class="card-icon">💡</div><h3>Innovation &amp; Digital Awareness</h3><p>Encourage curiosity, problem-solving and awareness of how technology can be used to address real community needs.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="approach">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Our learning approach</span>
+          <h2>From first steps to practical confidence</h2>
+          <p>We keep learning welcoming, guided and hands-on.</p>
+        </div>
+        <div class="steps">
+          <div class="step"><h3>Learn the basics</h3><p>Understand essential concepts with clear explanations and supportive instruction.</p></div>
+          <div class="step"><h3>Practise hands-on</h3><p>Apply what you learn through guided activities and practical exercises.</p></div>
+          <div class="step"><h3>Grow your confidence</h3><p>Build skills you can use in your studies, workplace and daily life.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="gallery" id="gallery">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Our activities</span>
+          <h2>Learning in action</h2>
+          <p>This space is reserved for photographs and videos from RILF training sessions, events and community activities.</p>
+        </div>
+        <div class="gallery-grid">
+          <div class="gallery-tile"><div><span class="symbol">📸</span><strong>Our learning journey</strong><br><small>Photos from RILF activities will appear here.</small></div></div>
+          <div class="gallery-tile"><div><span class="symbol">💻</span>Computer training</div></div>
+          <div class="gallery-tile"><div><span class="symbol">🧑‍🏫</span>Learning together</div></div>
+          <div class="gallery-tile"><div><span class="symbol">🏅</span>Celebrating progress</div></div>
+          <div class="gallery-tile"><div><span class="symbol">🌱</span>Community impact</div></div>
+        </div>
+        <p class="gallery-note">To publish real photos and videos online, the website will need to be connected to a hosting or content-management service.</p>
+      </div>
+    </section>
+
+    <section class="join">
+      <div class="container join-grid">
+        <div>
+          <span class="eyebrow">Take the next step</span>
+          <h2>Your learning journey can start here.</h2>
+          <p>Interested in our practical computer and digital-skills training? Get in touch to ask about upcoming sessions, registration and available spaces.</p>
+          <a class="btn light" href="#contact">Enquire about training</a>
+        </div>
+        <div class="join-box">
+          <h3>Training at a glance</h3>
+          <ul>
+            <li>In-person, practical learning sessions</li>
+            <li>Basic computer operations</li>
+            <li>Microsoft Office applications</li>
+            <li>Guided exercises and learner support</li>
+            <li>Limited spaces may be available for each training cycle</li>
+          </ul>
+          <p class="form-note">Training dates, fees (if applicable) and registration details are shared when a programme is announced.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Connect with us</span>
+          <h2>Let's get you started.</h2>
+          <p>Have a question about RILF or our training programmes? Send an enquiry.</p>
+        </div>
+        <div class="contact-grid">
+          <div class="contact-info">
+            <h3>Rayyan Innovation and Learning Foundation</h3>
+            <p class="muted">We welcome enquiries from learners, parents, educators, community partners and supporters.</p>
+            <div class="contact-item">✉️ <strong>Email:</strong> Add your official email address</div>
+            <div class="contact-item">📍 <strong>Location:</strong> Add your training location</div>
+            <div class="contact-item">📱 <strong>Phone / WhatsApp:</strong> Add your official contact number</div>
+            <p class="form-note">Update these details before publishing the website.</p>
+          </div>
+          <div>
+            <form id="enquiryForm">
+              <label>Your name<input name="name" required placeholder="Enter your full name"></label>
+              <label>Email address<input type="email" name="email" required placeholder="you@example.com"></label>
+              <label>What are you interested in?
+                <select name="interest"><option>Basic Computer Operations</option><option>Microsoft Office Training</option><option>Partnership or volunteering</option><option>General enquiry</option></select>
+              </label>
+              <label>Your message<textarea name="message" required placeholder="Write your enquiry here..."></textarea></label>
+              <button class="btn" type="submit">Prepare email enquiry</button>
+              <p class="form-note">This starter form opens your email application. Add RILF's official email address in the code before launch.</p>
+              <p id="formStatus" class="form-note" role="status"></p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-row">
+      <div><strong>RAYYAN INNOVATION AND LEARNING FOUNDATION</strong><br><small>Learn today. Build tomorrow.</small></div>
+      <small>© <span id="year"></span> RILF. All rights reserved.</small>
+    </div>
+  </footer>
+
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const navLinks = document.getElementById('navLinks');
+    menuBtn.addEventListener('click', () => {
+      const open = navLinks.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', String(open));
+      menuBtn.textContent = open ? '×' : '☰';
+    });
+    navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      menuBtn.setAttribute('aria-expanded', 'false');
+      menuBtn.textContent = '☰';
+    }));
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    document.getElementById('enquiryForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      const data = new FormData(this);
+      const recipient = 'YOUR_EMAIL@example.com'; // Replace with RILF's official email address.
+      const subject = encodeURIComponent('RILF Website Enquiry - ' + data.get('interest'));
+      const body = encodeURIComponent(
+        'Name: ' + data.get('name') + '\n' +
+        'Email: ' + data.get('email') + '\n' +
+        'Interest: ' + data.get('interest') + '\n\n' +
+        'Message:\n' + data.get('message')
+      );
+      if (recipient === 'YOUR_EMAIL@example.com') {
+        document.getElementById('formStatus').textContent =
+          'Please add RILF’s official email address in the HTML code before using this form.';
+        return;
+      }
+      window.location.href = 'mailto:' + recipient + '?subject=' + subject + '&body=' + body;
+    });
+  </script>
+</body>
+</html>
